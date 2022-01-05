@@ -37,6 +37,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 RUN pip3 --no-cache-dir install ipykernel && \
   python3 -m ipykernel.kernelspec && \
   pip3 install notebook && \
+  pip3 install jupyterlab && \
   pip3 install ipywidgets && \
   pip3 install --no-cache-dir widgetsnbextension && \
   pip3 install --no-cache-dir scipy matplotlib && \
@@ -117,6 +118,8 @@ RUN /bin/echo -e "install.packages(c('repr', 'pbdZMQ', 'devtools'), repos='http:
 #   julia -e 'Pkg.add("PyPlot")' && \
 #   julia -e 'Pkg.add("DataFrames")'
 
+RUN apt-get install -y nodejs npm
+
 VOLUME /notebooks
 VOLUME /root/.jupyter
 WORKDIR /notebooks
@@ -124,4 +127,4 @@ WORKDIR /notebooks
 EXPOSE 8888
 
 ENTRYPOINT ["/tini", "--"]
-CMD ["jupyter", "notebook", "--no-browser", "--allow-root"]
+CMD ["jupyter", "lab", "--no-browser", "--allow-root"]
