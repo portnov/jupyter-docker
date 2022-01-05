@@ -119,6 +119,7 @@ RUN /bin/echo -e "install.packages(c('repr', 'pbdZMQ', 'devtools'), repos='http:
 #   julia -e 'Pkg.add("DataFrames")'
 
 RUN apt-get install -y nodejs npm
+RUN jupyter labextension install jupyterlab-theme-solarized-dark @telamonian/theme-darcula @arbennett/base16-gruvbox-light @arbennett/base16-gruvbox-dark
 
 VOLUME /notebooks
 VOLUME /root/.jupyter
