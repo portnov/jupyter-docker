@@ -127,4 +127,4 @@ WORKDIR /notebooks
 EXPOSE 8888
 
 ENTRYPOINT ["/tini", "--"]
-CMD ["jupyter", "notebook", "--no-browser", "--allow-root"]
+CMD ["jupyter", "lab", "--no-browser", "--allow-root"]
