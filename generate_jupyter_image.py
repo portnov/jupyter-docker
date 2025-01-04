@@ -36,7 +36,7 @@ RUN apt-get update
 """
 
 TRAILER = r"""
-RUN /python/bin/pip3 install jupyterlab-theme-solarized-dark jupyterlab-gruvbox-dark
+RUN /python/bin/pip3 install jupyterlab-theme-solarized-dark jupyterlab-gruvbox-dark theme-darcula jupyterlab_theme_light_minimal
 
 VOLUME /notebooks
 VOLUME /root/.jupyter
