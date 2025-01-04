@@ -77,9 +77,9 @@ ENV SBCL_VERSION 2.5.0
 
 # Download & build sbcl
 RUN cd /usr/src/ && \
-  wget http://prdownloads.sourceforge.net/sbcl/sbcl-${SBCL_VERSION}-source.tar.bz2?download && \
-  tar xf sbcl-${SBCL_VERSION}-source.tar.bz2\?download && \
-  rm sbcl-${SBCL_VERSION}-source.tar.bz2\?download && \
+  wget http://prdownloads.sourceforge.net/sbcl/sbcl-${SBCL_VERSION}-source.tar.bz2?download -O sbcl.tar.bz2 && \
+  tar xf sbcl.tar.bz2 && \
+  rm sbcl.tar.bz2 && \
   cd sbcl-${SBCL_VERSION} && \
   bash make.sh && \
   bash install.sh

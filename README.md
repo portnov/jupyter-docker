@@ -9,6 +9,8 @@ instance with the following set of kernels:
 * Maxima
 * iHaskell
 * GNU R
+* GNU Octave
+* Julia
 
 This container is supposed to be used locally only - it does not contain secure
 enough configuration for use on public webservers.
@@ -16,7 +18,9 @@ enough configuration for use on public webservers.
 Building
 --------
 
-    $ docker build -t jupyter .
+    $ ./generate_jupyter_image.py -b
+
+See also `./generate_jupyter_image.py --help` for additional options.
 
 Running
 -------
