@@ -181,6 +181,8 @@ class Haskell(Kernel):
     def specific_install(self):
         return r"""
 RUN stack upgrade && \
+    mkdir -p /root/.stack/global-project && \
+    echo -e 'packages: []\nsnapshot: lts-22-10' > /root/.stack/global-project/stack.yaml && \
     git clone https://github.com/gibiansky/IHaskell && \
     cd IHaskell && \
     /python/bin/pip3 install -r requirements.txt && \
