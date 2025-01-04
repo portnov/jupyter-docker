@@ -247,14 +247,19 @@ DEFAULT_KERNELS = ['python', 'octave']
 
 def parse_cmdline():
     parser = argparse.ArgumentParser(
-                prog = "JupyterLab docker image builder",
+                prog = "generate_jupyter_image.py",
                 description = "Build a JupyterLab docker image with required kernels")
     parser.add_argument('-k', '--kernel', nargs='*', help="Specify required kernels")
-    parser.add_argument('--list-kernels', action='store_true', help="List supported kernels")
-    parser.add_argument('--ubuntu-version', nargs='?', default='24.04')
-    parser.add_argument('-o', '--output', default='Dockerfile.jupyter')
-    parser.add_argument('-b', '--build', action='store_true', help="Build the container")
-    parser.add_argument('-t', '--tag', nargs='?', default='jupyter', help="Specify image tag")
+    parser.add_argument('--list-kernels', action='store_true',
+                        help="List supported kernels")
+    parser.add_argument('--ubuntu-version', nargs='?', default='24.04',
+                        help="Specify Ubuntu version to use")
+    parser.add_argument('-o', '--output', default='Dockerfile.jupyter',
+                        help="Specify Dockerfile name")
+    parser.add_argument('-b', '--build', action='store_true',
+                        help="Build the image; if not specified, the script will only generate the Dockerfile.")
+    parser.add_argument('-t', '--tag', nargs='?', default='jupyter',
+                        help="Specify image tag, e.g. jupyter:custom")
     return parser.parse_args()
 
 def apt_install(deps):
