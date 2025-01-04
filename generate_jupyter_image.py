@@ -98,7 +98,7 @@ class Kernel:
         return {}
 
     def specific_install(self):
-        return "RUN /python/bin/pip3 install octave_kernel\n"
+        return ""
 
     def need_lisp(self):
         return False
@@ -114,7 +114,7 @@ class Python(Kernel):
 
 class Octave(Kernel):
     def get_dependencies(self):
-        return {'octave', 'gnuplot-nox'}
+        return {'octave', 'gnuplot-nox', 'ghostscript', 'fonts-freefont-otf'}
 
     def specific_install(self):
         return "RUN /python/bin/pip3 install octave_kernel\n"
