@@ -222,6 +222,16 @@ ADD install.R /usr/src/install.R
 RUN R -f /usr/src/install.R
 """
 
+class Java(Kernel):
+    def get_dependencies(self):
+        return {'openjdk-17-jdk-headless'}
+
+    def specific_install(self):
+        return r"""
+RUN wget https://github.com/allen-ball/ganymede/releases/download/v2.1.2.20230910/ganymede-2.1.2.20230910.jar -O ganymede.jar && \
+        java -jar ganymede.jar -i
+"""
+
 KNOWN_KERNELS = {
         'python': Python(),
         'octave': Octave(),
@@ -229,8 +239,11 @@ KNOWN_KERNELS = {
         'maxima': Maxima(),
         'haskell': Haskell(),
         'julia': Julia(),
-        'r': R()
+        'r': R(),
+        'java': Java()
     }
+
+DEFAULT_KERNELS = ['python', 'octave']
 
 def parse_cmdline():
     parser = argparse.ArgumentParser(
@@ -251,7 +264,7 @@ def apt_install(deps):
 
 def get_kernels(keys):
     if keys is None:
-        keys = KNOWN_KERNELS.keys()
+        keys = DEFAULT_KERNELS
     for key in keys:
         kernel = KNOWN_KERNELS.get(key, None)
         if kernel is None:
