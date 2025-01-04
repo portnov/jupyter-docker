@@ -1,0 +1,6 @@
+;(load "~/quicklisp/setup")
+(load "/usr/share/common-lisp/source/quicklisp/quicklisp.lisp")
+(quicklisp-quickstart:install)
+(ql:quickload :hunchentoot)
+(push :HUNCHENTOOT-NO-SSL *FEATURES*)
+(sb-ext::save-lisp-and-die "/usr/local/bin/hsbcl" :executable t)

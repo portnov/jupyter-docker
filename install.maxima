@@ -1,0 +1,6 @@
+:lisp (require "asdf")
+:lisp (load "/usr/share/common-lisp/source/quicklisp/quicklisp.lisp")
+:lisp (load "~/quicklisp/setup")
+:lisp (load "load-maxima-jupyter.lisp")
+jupyter_install_image();
+
